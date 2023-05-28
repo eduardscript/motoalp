@@ -1,41 +1,35 @@
 'use client'
 
-import UserModel from "@/shared/UserModel"
-import { useForm } from "react-hook-form"
-import Sucess from "./success/page";
+import UserModel from "@/shared/UserModel";
+import { useForm } from "react-hook-form";
+import Success, { SuccessProps } from "./success/page";
 import { useState } from "react";
 
-type DataProps = {
-  id: any
-  name: string
-}
+
 
 export default function Home() {
-  const { register, handleSubmit } = useForm<UserModel>()
+  const { register, handleSubmit } = useForm<UserModel>();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [data, setData] = useState<DataProps>();
+  const [data, setData] = useState<SuccessProps>();
 
-  const onSubmit = async (data: UserModel) => {
+  const onSubmit = async (formData: UserModel) => {
     const response = await fetch('/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
-    })
+      body: JSON.stringify(formData),
+    });
 
     const responseData = await response.json();
 
-    console.log(responseData)
-
-    const { _id: id, name } = responseData; 
-    
+    console.log(responseData.id)
     setIsSubmitted(true);
-    setData({ id, name })
-  }
+    setData({ name: formData.name, id: responseData.id });
+  };
 
   if (isSubmitted && data) {
-    return <Sucess id={data.id} name={data.name} />
+    return <Success id={data.id} name={data.name} />;
   }
 
   return (
@@ -70,7 +64,5 @@ export default function Home() {
             Inscrever-me
         </button>
     </form>
-  )
+  );
 }
-
-

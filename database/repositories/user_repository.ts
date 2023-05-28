@@ -8,7 +8,11 @@ class UserRepository {
     private static _lock: boolean = false
 
     private constructor() {
-        User = model<UserDocument>('User') || model<UserDocument>('User', userSchema)
+        try {
+            User = model<UserDocument>('User')
+        } catch (error) {
+            User = model<UserDocument>('User', userSchema)
+        }
     }
 
     public static getInstance() : UserRepository {

@@ -10,6 +10,6 @@ export async function POST(request: Request, response: Response) {
 
     var result = await UserRepository.getInstance().insert(userData)
 
-    return NextResponse.json(result);
+    return NextResponse.json({ id: result._id.toString() });
 }
 
