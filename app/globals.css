@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HTML Background Color */
+body {
+  background-color: #111111;
+  color: white;
+}
+
+/* Form alignment */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Label */
+.label {
+  font-size: 13px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 9px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.form-group input:focus ~ .label,
+.form-group input:not(:focus):valid ~ .label {
+top: -15px;
+left: 0px;
+font-size: 11px;
+opacity: 1;
+color: #cccccc;
+}
+
+/* Inputs */
+.input {
+  width: 35vh;
+  display: block;
+  padding: 10px 5px;
+  left: 20px;
+  top: 18px;
+  transition: all .2s ease-in;
+  color: black;
+}
+
+.input:hover {
+  border-radius: 5px;
+}
+
+.input:focus {
+  outline: none;
+  border-radius: 8px;
+  border-color: rgba(0, 255, 255, 0.525);
+  border-width: 4px;
+}
+
+/* Button */
+.button {
+  border: none;
+  border-radius: 20px;
+  background-color: green;
+  padding: 20px;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: white;
+  cursor: pointer;
+  transition: all .2s ease-out
+}
+
+.button:hover {
+  border-radius: 18px;
+  background-color: rgb(31, 180, 31);
+}
