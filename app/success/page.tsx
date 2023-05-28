@@ -14,3 +14,5 @@ export default function Sucess({ name, id }: SuccessProps) {
     </div>
   );
 }
+
+export type { SuccessProps }
