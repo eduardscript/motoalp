@@ -5,12 +5,11 @@ import { UserDocument } from "@/database/user.model";
 import UserRepository from "@/database/repositories/user_repository";
 
 export async function POST(request: Request, response: Response) {
-    console.log(process.env.MONGODB_URI)
     await database.connect()
     const userData = JSON.parse(await request.text()) as UserDocument;
 
-    UserRepository.getInstance().insert(userData)
-    
-    return NextResponse.json({ userData });
+    var result = await UserRepository.getInstance().insert(userData)
+
+    return NextResponse.json(result);
 }
 

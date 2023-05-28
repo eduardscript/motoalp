@@ -1,4 +1,4 @@
-import { model, Model } from "mongoose";
+import { model, Model, models } from "mongoose";
 import userSchema, { UserDocument } from "../user.model"
 
 let User: Model<UserDocument>;
@@ -8,7 +8,7 @@ class UserRepository {
     private static _lock: boolean = false
 
     private constructor() {
-        User = model<UserDocument>('User', userSchema);
+        User = model<UserDocument>('User') || model<UserDocument>('User', userSchema)
     }
 
     public static getInstance() : UserRepository {
@@ -29,6 +29,8 @@ class UserRepository {
         const newUser = new User(user);
 
         await newUser.save()
+
+        return newUser
     }
 }
 

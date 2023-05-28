@@ -2,20 +2,40 @@
 
 import UserModel from "@/shared/UserModel"
 import { useForm } from "react-hook-form"
+import Sucess from "./success/page";
+import { useState } from "react";
+
+type DataProps = {
+  id: any
+  name: string
+}
 
 export default function Home() {
   const { register, handleSubmit } = useForm<UserModel>()
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [data, setData] = useState<DataProps>();
 
   const onSubmit = async (data: UserModel) => {
-    console.log(data)
-
-    fetch('/api', {
+    const response = await fetch('/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data)
     })
+
+    const responseData = await response.json();
+
+    console.log(responseData)
+
+    const { _id: id, name } = responseData; 
+    
+    setIsSubmitted(true);
+    setData({ id, name })
+  }
+
+  if (isSubmitted && data) {
+    return <Sucess id={data.id} name={data.name} />
   }
 
   return (
