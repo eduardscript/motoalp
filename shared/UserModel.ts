@@ -5,7 +5,7 @@ interface UseModel {
     identityCardNumber: number
     shirtSize: 'S' | 'M' | 'L' | 'XL' | 'XXL',
     metadata: {
-        ip: string
+        ip: string | undefined
     }
 }
 
