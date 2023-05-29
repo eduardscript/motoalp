@@ -27,11 +27,9 @@ const userSchema = new Schema<UserDocument>({
         enum: ['S', 'M', 'L', 'XL', 'XXL'],
         required: true,
     },
-    metadata: {
-        ip: {
-            type: String
-        }
-    }
+    ipAdress: {
+        type: String,
+    },
 }, { timestamps: true })
 
 
