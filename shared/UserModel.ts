@@ -3,7 +3,8 @@ interface UseModel {
     city: string;
     phoneNumber: number;
     identityCardNumber: number
-    shirtSize: 'S' | 'M' | 'L' | 'XL' | 'XXL'
+    shirtSize: 'S' | 'M' | 'L' | 'XL' | 'XXL',
+    metadata: string | undefined
 }
 
 export default UseModel

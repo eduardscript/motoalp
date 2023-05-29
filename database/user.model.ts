@@ -27,7 +27,10 @@ const userSchema = new Schema<UserDocument>({
         enum: ['S', 'M', 'L', 'XL', 'XXL'],
         required: true,
     },
-})
+    metadata: {
+        type: String,
+    }
+}, { timestamps: true })
 
 
 export default userSchema
