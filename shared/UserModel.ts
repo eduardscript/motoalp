@@ -4,7 +4,9 @@ interface UseModel {
     phoneNumber: number;
     identityCardNumber: number
     shirtSize: 'S' | 'M' | 'L' | 'XL' | 'XXL',
-    metadata: string | undefined
+    metadata: {
+        ip: number
+    }
 }
 
 export default UseModel
