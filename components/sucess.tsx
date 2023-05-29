@@ -1,9 +1,9 @@
-export type SuccessProps = {
+export type Props = {
   id: any
   name: string
 };
 
-export default function Success({ id, name }: SuccessProps) {
+export default function Success({ id, name }: Props) {
   return (
     <div className="container">
       <strong>{name}</strong> inscricao feita com sucesso
