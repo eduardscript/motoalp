@@ -2,13 +2,13 @@
 
 import UserModel from "@/shared/UserModel";
 import { useForm } from "react-hook-form";
-import Success from "../components/sucess";
+import Success, { Props as SuccessProps } from "../components/sucess";
 import { useState } from "react";
 
 export default function Home() {
   const { register, handleSubmit } = useForm<UserModel>();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<SuccessProps>();
 
   const onSubmit = async (formData: UserModel) => {
     const response = await fetch('/api', {
