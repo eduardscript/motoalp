@@ -29,7 +29,7 @@ const userSchema = new Schema<UserDocument>({
     },
     metadata: {
         ip: {
-            type: Number
+            type: String
         }
     }
 }, { timestamps: true })
