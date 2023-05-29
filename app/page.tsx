@@ -5,12 +5,10 @@ import { useForm } from "react-hook-form";
 import Success, { SuccessProps } from "./success/page";
 import { useState } from "react";
 
-
-
 export default function Home() {
   const { register, handleSubmit } = useForm<UserModel>();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [data, setData] = useState<SuccessProps>();
+  const [data, setData] = useState<{ id: any, name: string }>();
 
   const onSubmit = async (formData: UserModel) => {
     const response = await fetch('/api', {
@@ -23,9 +21,8 @@ export default function Home() {
 
     const responseData = await response.json();
 
-    console.log(responseData.id)
     setIsSubmitted(true);
-    setData({ name: formData.name, id: responseData.id });
+    setData({ id: responseData.id, name: formData.name });
   };
 
   if (isSubmitted && data) {

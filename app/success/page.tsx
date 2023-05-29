@@ -1,5 +1,5 @@
 export type SuccessProps = {
-  id: string
+  id: any
   name: string
 };
 
